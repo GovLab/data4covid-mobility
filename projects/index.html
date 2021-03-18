@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B29VNMF8NQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B29VNMF8NQ');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+        Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+        University of Washington, and others—to identify, collect, and analyze the value data can provide to the
+        ongoing COVID-19 pandemic" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Data4COVID19" />
+    <meta property="og:description"
+        content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+        Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+        University of Washington, and others—to identify, collect, and analyze the value data can provide to the
+        ongoing COVID-19 pandemic" />
+    <meta property="og:image" content="../img/covid-logo-color.png" />
+    <title>Data4COVID19</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+<a style="text-decoration: none;" href="https://list.data4covid19.org" class="top-bar_button"><span class="material-icons">
+    reply
+    </span></a>
+<header class="gl-header">
+    <a class="govlab-logo" target="_blank" href="http://thegovlab.org">
+        <img src="../img/govlab-logo-white.png" alt="The GovLab">
+    </a>
+    <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
+        <img id="luminate" src="../img/luminate.png">
+    </a>
+</header>
+
+<body>
+    <div id="project-page">
+
+    <div class="project-header-row">
+        <div class="project-header-col col-20":style="{ backgroundImage: 'url(' + filterData[0].thumbnail.data.full_url+ ')' }">
+            
+        </div>
+        
+        <div class="project-header-col col-80">
+            <h1>{{filterData[0].title}}</h1>
+            <p id="date">{{dateShow(filterData[0].project_initiation_date)}}</p>
+            <p>{{filterData[0].description}}</p>
+            <div class="read-more">
+                <a class="btn" href="#long-description">Read more</a>
+                <a class="btn" :href="filterData[0].url" target="_blank">Project Website</a>
+               </div>
+
+            
+            <div class="tag-section">
+                <div class="tag-row">
+                    <span id="location-icon" class="material-icons"> local_offer</span>
+                <div  class="tag-col" v-for="topics in filterData[0].data_collaborative_type" v-if="topics">
+                    <p  v-if="topics == 'dc_0'"><span class="tag dc-tag">Public Interfaces</span></p>
+                    <p  v-if="topics == 'dc_1'"><span class="tag dc-tag">Trusted Intermediary</span></p>
+                    <p  v-if="topics == 'dc_2'"><span class="tag dc-tag">Data Pooling</span></p>
+                    <p  v-if="topics == 'dc_3'"><span class="tag dc-tag">Research and Analysis Partnership</span></p>
+                    <p  v-if="topics == 'dc_4'"><span class="tag dc-tag">Prizes & Challenges</span></p>
+                    <p  v-if="topics == 'dc_5'"><span class="tag dc-tag">Intelligence Generation</span></p>
+                </div>
+                </div>
+                <div class="tag-row">
+                    <span id="location-icon" class="material-icons"> location_on</span>
+                    <div class="tag-col" v-for="regions in filterData[0].region" v-if="regions">
+                            <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central Asia</span></p>
+                            <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the Caribbean</span></p>
+                            <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span></p>
+                            <p v-if="regions == 'mena'"><span class="tag region-tag">Middle East and North Africa</span></p>
+                            <p v-if="regions == 'na'"><span class="tag region-tag">North America</span></p>
+                            <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span></p>
+                            <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+                            <p v-if="regions == 'sasia'"><span class="tag region-tag">South Asia</span></p>
+                        </div>
+                </div>
+                <div class="tag-row email">
+                    <span id="location-icon" class="material-icons"> mail</span>
+                    <p><span class="tag email-tag">{{filterData[0].contact_info}}</span></p>
+                </div>
+                </div>
+                <div class="phase">
+                <p>PANDEMIC PHASE</p>
+                <div class="row-cust mt-5">
+                    <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase.includes('phase_0'))?'active':'none'">
+                      <div class="dot-class"> <span class="dot"></span></div>
+                      <p class="tip">Readiness &nbsp</p> 
+                    </a>
+                    <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase.includes('phase_1'))?'active':'none'">
+                        <div class="dot-class"> <span class="dot"></span></div>
+                        <p class="tip">Response &nbsp</p> 
+                      </a>
+                      <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase.includes('phase_2'))?'active':'none'">
+                        <div class="dot-class"> <span class="dot"></span></div>
+                        <p class="tip">Recovery &nbsp</p> 
+                      </a>
+                      <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase.includes('phase_3'))?'active':'none'">
+                        <div class="dot-class"> <span class="dot"></span></div>
+                        <p class="tip">Reform &nbsp</p> 
+                      </a>
+                    </div>
+                    </div>
+        </div>
+    </div>
+
+    <div class="summary">
+
+        <div class="row-summary">
+          <div class="column-summary">
+ 
+            <p><span class="summary-item">Participants</span>&nbsp<span>{{filterData[0].participants}}</span></p>
+            <p><span class="summary-item">Type of Question</span>&nbsp<span v-for="qn in filterData[0].type_of_question">
+                <span v-if="qn == 'type_0'">Situational Awareness;</span>
+                <span v-if="qn == 'type_1'">Cause and Effect Analysis;</span>
+                <span v-if="qn == 'type_2'">Prediction;</span>
+                <span v-if="qn == 'type_3'">Impact Assessment;</span>
+            </span></p>
+            <p><span class="summary-item">Topic Area</span>&nbsp<span v-for="topic in filterData[0].topic_areas">
+                <span v-if="topic == 'topic_0'">Tracking the Pandemic’s Evolution;</span>
+                <span v-if="topic == 'topic_1'">Developing Disease Treatment;</span>
+                <span v-if="topic == 'topic_2'">Identifying Availability and Demand for Supplies;</span>
+                <span v-if="topic == 'topic_3'">Monitoring Adherence to Health Protocols and Practices;</span>
+                <span v-if="topic == 'topic_4'">Understanding Public Perceptions, Well-being and Behavior;</span>
+                <span v-if="topic == 'topic_5'">Protecting Democracy, Human Rights and Promoting Government Accountability;</span>
+                <span v-if="topic == 'topic_6'">Addressing Misinformation;</span>
+                <span v-if="topic == 'topic_7'">Supporting Post-Pandemic Re-openings and Recovery;</span>
+                <span v-if="topic == 'topic_8'">Alleviating the Burden on Migrants;</span>
+                <span v-if="topic == 'topic_9'">Alleviating Pandemic-related Unemployment and Poverty;</span>
+                <span v-if="topic == 'topic_10'">Guaranteeing Protections for Workers;</span>
+                <span v-if="topic == 'topic_11'">Supporting Education, Upskilling and Reskilling;</span>
+                <span v-if="topic == 'topic_12'">SFostering Business and Government Solvency;</span>
+                <span v-if="topic == 'topic_13'">Assessing Environmental Impact;</span>
+                <span v-if="topic == 'topic_14'">Understanding the Economic Impact;</span>
+                <p><span class="summary-item">Sector</span>&nbsp<span>
+                    <span v-if="filterData[0].sector == '0'">Public Health;</span>
+                    <span v-if="filterData[0].sector == '1'">Social;</span>
+                    <span v-if="filterData[0].sector == '2'">Economic;</span>
+           
+                </span></p>
+                <p><span class="summary-item">Scope</span>&nbsp
+                    <span v-if="filterData[0].scope == '0'">Local;</span>
+                    <span v-if="filterData[0].scope == '1'">Regional;</span>
+                    <span v-if="filterData[0].scope == '2'">National;</span>
+                    <span v-if="filterData[0].scope == '3'">Multilateral;</span>
+                    <span v-if="filterData[0].scope == '4'">Undefined;</span></p>
+         
+            
+          </div>
+          <div class="column-summary right">
+
+                <p><span class="summary-item">Data Supplier</span>&nbsp
+                    <span v-for="supplier in filterData[0].data_supplier">
+                    <span v-if="supplier == 'supplier_0'">Private Sector;</span>
+                    <span v-if="supplier == 'supplier_1'">Civil Society;</span>
+                    <span v-if="supplier == 'supplier_2'">Research/Academia;</span>
+                    <span v-if="supplier == 'supplier_3'">General Public;</span>
+                    <span v-if="supplier == 'supplier_4'">Public Sector;</span>
+                </span></p>
+                <p><span class="summary-item">Data User</span>&nbsp
+                    <span v-for="user in filterData[0].data_user">
+                    <span v-if="user == 'user_0'">Private Sector;</span>
+                    <span v-if="user == 'user_1'">Civil Society;</span>
+                    <span v-if="user == 'user_2'">Research/Academia;</span>
+                    <span v-if="user == 'user_3'">General Public;</span>
+                    <span v-if="user == 'user_4'">Public Sector;</span>
+                </span></p>
+                <p><span class="summary-item">Data Sources</span>&nbsp
+                    <span v-for="source in filterData[0].data_sources">
+                        <span v-if="source == 'source_0'">Social media data;</span>
+                        <span v-if="source == 'source_1'">Online search data;</span>
+                        <span v-if="source == 'source_2'">Clinical data;</span>
+                        <span v-if="source == 'source_3'">Health system usage;</span>
+                        <span v-if="source == 'source_4'">Academic research databases;</span>
+                        <span v-if="source == 'source_5'">Consumer data;</span>
+                        <span v-if="source == 'source_6'">Surveys / crowdsourcing;</span>
+                        <span v-if="source == 'source_7'">Geospatial data;</span>
+                        <span v-if="source == 'source_8'">Location intelligence;</span>
+                        <span v-if="source == 'source_9'">Telecom Data;</span>
+                        <span v-if="source == 'source_10'">Wearables and biometric data;</span>
+                        <span v-if="source == 'source_11'">News media;</span>
+                        <span v-if="source == 'source_12'">Satellite imagery;</span>
+                        <span v-if="source == 'source_13'">Supply chain, manufacturing, and other industrial data;</span>
+                        <span v-if="source == 'source_14'">Retail;</span>
+                        <span v-if="source == 'source_15'">Transportation providers;</span>
+                        <span v-if="source == 'source_16'">IoT sensors;</span>
+                        <span v-if="source == 'source_17'">Health business data;</span>
+                        <span v-if="source == 'source_18'">Government data (open and administrative data);</span>
+                        <span v-if="source == 'source_19'">Financial data;</span>
+                </span></p>
+                <p><span class="summary-item">Output</span>&nbsp
+                    
+                    <span v-for="(out,index) in filterData[0].outputs">
+                    <span v-if="out == 'output_0'">Dashboard / Visualization;</span>
+                    <span v-if="out == 'output_1'">Repository / Portal;</span>
+                    <span v-if="out == 'output_2'">Static Reporting;</span>
+                    <span v-if="out == 'output_3'">Mobile App;</span>
+                    <span v-if="out == 'output_4'">Interactive Tool / Analytics;</span>
+    
+                </span></p>
+
+          </div>
+        </div>
+    </div>
+
+    <div id="long-description" class="project-page-section">
+        <h3>DESCRIPTION</h3>
+        <p> {{filterData[0].long_description}}</p>
+    </div>
+    
+    <footer>
+        <div class="logo-side">
+            <div class="logos">
+                <img src="../img/govlab-logo-white.png">
+                <img id="luminate" src="../img/luminate.png">
+            </div>
+            <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
+                The GovLab is to strengthen the ability of institutions — including but not limited to governments —
+                and people to work more openly, collaboratively, effectively, and legitimately to make better
+                decisions and solve public problems. We believe that increased availability and use of data, new
+                ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process,
+                combined with new advances in technology and science, can transform governance. We approach each
+                challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem,
+                sector, geography, and level of government. For more information, visit thegovlab.org.</p>
+        </div>
+        <div class="address">
+
+            <h4>CONTACT US</h4>
+            <p>The GovLab<br>
+                NYU Tandon School of Engineering<br>
+                2 MetroTech Center, 9th Floor<br>
+                Brooklyn, NY 11201<br>
+                (646) 997-3150<br>
+                info@thegovlab.org
+            </p>
+        </div>
+    </footer>
+    <footer>
+
+        <div class="attribute">
+            <p>The #Data4COVID19 Repository is made possible in part by a #COVIDaction Data Challenge award from the UKAID Department for International Development (DFID)’s Frontier Technologies Hub.
+            </p>
+        </div>
+        <div class="logo-side">
+            <div class="logos">
+                <img src="../img/ukaid.png">
+                <img style="margin-left:20px" src="../img/COVIDaction_logo-white.png">
+                
+            </div>
+
+        </div>
+    </footer>
+</div>
+</body>
+
+<script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
+<script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
+<script src="../js/project.js"></script>
+
+</html>

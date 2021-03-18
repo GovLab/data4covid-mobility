@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B29VNMF8NQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B29VNMF8NQ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+        Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+        University of Washington, and others—to identify, collect, and analyze the value data can provide to the
+        ongoing COVID-19 pandemic" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Data4COVID19" />
+    <meta property="og:description" content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+        Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+        University of Washington, and others—to identify, collect, and analyze the value data can provide to the
+        ongoing COVID-19 pandemic" />
+    <meta property="og:image" content="img/covid-logo-color.png" />
+    <title>Data4COVID19</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<a style="text-decoration: none;" href="http://data4covid19.org" target="_blank" class="top-bar_button"><span
+        class="material-icons">
+        reply
+    </span></a>
+<header class="gl-header">
+    <a class="govlab-logo" target="_blank" href="http://thegovlab.org">
+        <img src="img/govlab-logo-white.png" alt="The GovLab">
+    </a>
+    <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
+        <img id="luminate" src="img/luminate.png">
+    </a>
+</header>
+
+<body>
+   
+
+        <div class="hero testing hero-banner">
+            <div class="text">
+                <h1>#Data4COVID19</h1>
+                <span>
+                    <p>A living repository for &nbsp<a href="https://datacollaboratives.org/" target="_blank">data
+                            collaboratives</a>&nbsp seeking to address the spread of &nbsp <a
+                            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen"
+                            target="_blank">COVID-19</a>&nbsp </p>
+                </span>
+            </div>
+        </div>
+        <div class="description-boxes">
+            <div class="description-text">
+                <p>Share your project for inclusion. We seek to learn from initiatives that reuse data for covid19 in a
+                    collaborative, responsible and systematic way. </p>
+                <a class="btn" href="https://forms.gle/R58Wn15xTJgR7TFL8" target="_blank">CONTRIBUTE TO THIS
+                    REPOSITORY</a>
+
+            </div>
+            <div class="description-bullets">
+                <p>Part of our <a href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244"
+                        target="_blank">Call For Action</a> to Build A Responsible Infrastructure For Data-driven
+                    Pandemic Response.
+                </p>
+                <br>
+                <a class="btn"
+                    href="https://thegovlab.us6.list-manage.com/subscribe?u=1a990feb5c&id=9440a57cfc&utm_source=Data+Stewards+Network&utm_campaign=358957fad7-EMAIL_CAMPAIGN_2019_05_17_08_37_COPY_01&utm_medium=email&utm_term=0_bc6d09925f-358957fad7-87790069"
+                    target="_blank">Sign up for the data4covid19 newsletter</a>
+
+            </div>
+        </div>
+        <div class="divider">
+            <h1>Explore the repository</h1>
+        </div>
+        <div id="home-page">
+        <div class="filters">
+            <div class="form-control">
+                <select id="form-1" @change="changeFilter($event)">
+                    <option class="material-icons" value="" selected disabled>Scope</option>
+                    <option v-for="scope in js_scope" :value="scope.code" :key="scope.code">{{ scope.name }}
+                    </option>
+                </select>
+            </div>
+            <p>&nbsp&nbsp&nbsp</p>
+            <div class="form-control">
+                <select id="form-2" @change="changeFilter($event)">
+                    <option value="" selected disabled>Region</option>
+                    <option v-for="region in js_regions" :value="region.code" :key="region.code">{{ region.name }}
+                    </option>
+                </select>
+
+            </div>
+            <p>&nbsp&nbsp&nbsp</p>
+            <div class="form-control">
+                <select id="form-3" @change="changeFilter($event)">
+                    <option value="" selected disabled>Topic</option>
+                    <option v-for="topic in js_topic" :value="topic.code" :key="topic.code">{{ topic.name }}</option>
+                </select>
+
+            </div>
+            <p>&nbsp&nbsp&nbsp</p>
+            <div class="form-control">
+                <select id="form-4"  @change="changeFilter($event)">
+                    <option value="" selected disabled>Pandemic Phase</option>
+                    <option v-for="phase in js_phase" :value="phase.code" :key="phase.code">{{ phase.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="search">
+            <input name="search-bar" type="text" id="search-text" />
+            <input name="buttonExecute" @click="searchItems()" type="button" value="Search" />
+            <input name="buttonExecute" @click="ResetItems()" type="button" value="Reset" />
+        </div>
+        
+        <div class="count-entries">
+            <p><span>Total number of projects in the repository: <b>{{indexData.length}}</b></span></p>
+        </div>
+        <div id="filter-count" class="count-entries">
+            <p><span>Filtered projects: <b>{{filterData.length}}</b></span></p>
+        </div>
+        <div class="project-list">
+            <div class="no-project" v-if="!filterData.length">
+                Sorry no projects found for the filter criteria you selected!
+            </div>
+            <div v-for="project in filterData" class="project-item">
+                <a :href="'projects/' + project.project_name.slug" class="project-card">
+                    <div class="project-img">
+                        <img v-if="project.project_name.thumbnail" class="project-img" :src="project.project_name.thumbnail.data.full_url">
+                    </div>
+                    <div class="project-text small">
+                        <p id="title">{{project.project_name.title}}</p>
+                        <p id="date">{{dateShow(project.project_name.project_initiation_date)}}</p>
+                        <p id="desc">{{project.project_name.description}}</p>
+                        <div class="tag-section">
+                            <div class="tag-row">
+                                <span id="location-icon" class="material-icons"> search</span>
+                                <div class="tag-col" v-if="project.project_name.scope">
+                                    <p v-if="project.project_name.scope == '0'"><span class="tag dp-tag">Local</span></p>
+                                    <p v-if="project.project_name.scope == '1'"><span class="tag dp-tag">Regional</span></p>
+                                    <p v-if="project.project_name.scope == '2'"><span class="tag dp-tag">National</span></p>
+                                    <p v-if="project.project_name.scope == '3'"><span class="tag dp-tag">Multilateral</span></p>
+                                    <p v-if="project.project_name.scope == '4'"><span class="tag dp-tag">Undefined</span></p>
+                                </div>
+                            </div>
+                            <div class="tag-row">
+                                <span id="location-icon" class="material-icons"> location_on</span>
+                                <div class="tag-col" v-for="regions in project.project_name.region" v-if="regions">
+                                    <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central
+                                            Asia</span></p>
+                                    <p v-if="regions == 'sasia'"><span class="tag region-tag">South Asia</span></p>
+                                    <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the
+                                            Caribbean</span></p>
+                                    <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span>
+                                    </p>
+                                    <p v-if="regions == 'mena'"><span class="tag region-tag">Middle East and North
+                                            Africa</span></p>
+                                    <p v-if="regions == 'na'"><span class="tag region-tag">North America</span></p>
+                                    <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span>
+                                    </p>
+                                    <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+
+                                </div>
+                            </div>
+                            <div class="tag-row phase">
+                                <p>Pandemic Phase</p>
+                                <div class="phase-row">
+
+                                    <div class="phase-col"
+                                        v-bind:class="(project.project_name.pandemic_phase.includes('phase_0'))?'phase-sel':'none'">
+                                        Readiness
+                                    </div>
+                                    <div class="phase-col"
+                                        v-bind:class="(project.project_name.pandemic_phase.includes('phase_1'))?'phase-sel':'none'">
+                                        Response
+                                    </div>
+                                    <div class="phase-col"
+                                        v-bind:class="(project.project_name.pandemic_phase.includes('phase_2'))?'phase-sel':'none'">
+                                        Recovery
+                                    </div>
+                                    <div class="phase-col"
+                                        v-bind:class="(project.project_name.pandemic_phase.includes('phase_3'))?'phase-sel':'none'">
+                                        Reform
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+
+    </div>
+        <div class="stay-connected">
+            <h1>Stay Up to Date</h1>
+            <p>Information on each of these project streams, as well information about upcoming coronavirus-related
+                events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of
+                these strands can contact us at <a style="color:#ffffff;font-weight:400"
+                    href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a></p>
+            <!-- <br>If these projects interest you, you might also be interested in The GovLab’s <a
+                    style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a
+                collective intelligence course which aims to improve responses to COVID-19.</p> -->
+        </div>
+
+        <footer>
+            <div class="logo-side">
+                <div class="logos">
+                    <img src="img/govlab-logo-white.png">
+                    <img id="luminate" src="img/luminate.png">
+                </div>
+                <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
+                    The GovLab is to strengthen the ability of institutions — including but not limited to governments —
+                    and people to work more openly, collaboratively, effectively, and legitimately to make better
+                    decisions and solve public problems. We believe that increased availability and use of data, new
+                    ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process,
+                    combined with new advances in technology and science, can transform governance. We approach each
+                    challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem,
+                    sector, geography, and level of government. For more information, visit thegovlab.org.</p>
+            </div>
+            <div class="address">
+
+                <h4>CONTACT US</h4>
+                <p>The GovLab<br>
+                    NYU Tandon School of Engineering<br>
+                    2 MetroTech Center, 9th Floor<br>
+                    Brooklyn, NY 11201<br>
+                    (646) 997-3150<br>
+                    info@thegovlab.org
+                </p>
+            </div>
+        </footer>
+        <footer>
+
+            <div class="attribute">
+                <p>The #Data4COVID19 Repository is made possible in part by a #COVIDaction Data Challenge award from the
+                    UKAID Department for International Development (DFID)’s Frontier Technologies Hub.
+                </p>
+            </div>
+            <div class="logo-side">
+                <div class="logos">
+                    <img src="img/ukaid.png">
+                    <img style="margin-left:20px" src="img/COVIDaction_logo-white.png">
+
+                </div>
+
+            </div>
+        </footer>
+
+</body>
+
+<script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
+<script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
+<script src="js/scripts.js"></script>
+
+</html>
