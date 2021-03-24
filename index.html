@@ -72,7 +72,8 @@
                 <a href="https://www.thegovlab.org/" target="_blank">The GovLab</a>, <a href="https://www.cuebiq.com/"
                     target="_blank">Cuebiq</a> sought to understand the current state of mobility data
                 collaboratives for COVID-19 response and identify conditions for success and obstacles to achieving
-                impact.</p>
+                impact.
+            </p>
 
         </div>
         <div class="description-text">
@@ -80,13 +81,14 @@
                 described in greater detail through long-form case studies. We provide recommendations towards enabling
                 more systematic, sustainable and responsible models of reuse of mobility data through data collaboration
                 as to support decision-making regarding pandemic prevention, monitoring, and response</p>
-               
+
         </div>
     </div>
     <div class="home-btn">
-        <a class="btn" href="" target="_blank">Read the Full Report: <br>The Use of Mobility Data for Responding to the COVID-19 Pandemic</a>
+        <a class="btn" href="" target="_blank">Read the Full Report: <br>The Use of Mobility Data for Responding to the
+            COVID-19 Pandemic</a>
     </div>
-    
+
     <div style="padding-top:50px;margin-top:-50px" class="divider">
         <h1>Explore the repository</h1>
     </div>
@@ -152,30 +154,47 @@
                         <p id="desc">{{project.project_name.description}}</p>
                         <div class="tag-section">
                             <div class="tag-row">
-                                
-                                    <span id="location-icon" class="material-icons"> insert_chart</span>
-                                    <div class="tag-col" v-for="mobility_type in project.mobility_data_type" v-if="mobility_type">
 
-                                        <p v-if="mobility_type == 'mdata1'"><span class="tag type-tag">Call Detail Records</span></p>
-                                        <p v-if="mobility_type == 'mdata2'"><span class="tag type-tag">x-DRs</span></p>
-                                        <p v-if="mobility_type == 'mdata3'"><span class="tag type-tag">First-Party Software Development Kit-derived Smartphone GPS</span></p>
-                                        <p v-if="mobility_type == 'mdata4'"><span class="tag type-tag">Third-Party Software Development Kit-derived Smartphone GPS</span></p>
-                                        <p v-if="mobility_type == 'mdata5'"><span class="tag type-tag">BidStream Data</span></p>
-                                        <p v-if="mobility_type == 'mdata6'"><span class="tag type-tag">Wearable GPS</span></p>
-                                        <p v-if="mobility_type == 'mdata7'"><span class="tag type-tag">Aerial Imagery</span></p>
-                                        <p v-if="mobility_type == 'mdata8'"><span class="tag type-tag">Vehicle GPS</span></p>
-                                        <p v-if="mobility_type == 'mdata9'"><span class="tag type-tag">Bluetooth</span></p>
-                                        <p v-if="mobility_type == 'mdata0a'"><span class="tag type-tag">Geotagged Social Media Data</span></p>
-                                        <p v-if="mobility_type == 'mdata0b'"><span class="tag type-tag">Cellular Signaling Data</span></p>
-                                        <p v-if="mobility_type == 'mdata0c'"><span class="tag type-tag">Combined Third-Party smartphone-derived GPS</span></p>
-                                        <p v-if="mobility_type == 'mdata0d'"><span class="tag type-tag">Third party location data</span></p>
-                                        <p v-if="mobility_type == 'mdata0e'"><span class="tag type-tag">Sensor Data</span></p>
-                                        <p v-if="mobility_type == 'mdata0f'"><span class="tag type-tag">WiFi Footfall data</span></p>
-                                        <p v-if="mobility_type == 'mdata1a'"><span class="tag type-tag">Ticketing fare data</span></p>
-                                        <p v-if="mobility_type == 'mdata1b'"><span class="tag type-tag">Public transportation records</span></p>
-                                        <p v-if="mobility_type == 'mdata1c'"><span class="tag type-tag">Point of Interest Data</span></p>
-                                    </div>
+                                <span id="location-icon" class="material-icons"> insert_chart</span>
+                                <div class="tag-col" v-for="mobility_type in project.mobility_data_type"
+                                    v-if="mobility_type">
+
+                                    <p v-if="mobility_type == 'mdata1'"><span class="tag type-tag">Call Detail
+                                            Records</span></p>
+                                    <p v-if="mobility_type == 'mdata2'"><span class="tag type-tag">x-DRs</span></p>
+                                    <p v-if="mobility_type == 'mdata3'"><span class="tag type-tag">First-Party Software
+                                            Development Kit-derived Smartphone GPS</span></p>
+                                    <p v-if="mobility_type == 'mdata4'"><span class="tag type-tag">Third-Party Software
+                                            Development Kit-derived Smartphone GPS</span></p>
+                                    <p v-if="mobility_type == 'mdata5'"><span class="tag type-tag">BidStream Data</span>
+                                    </p>
+                                    <p v-if="mobility_type == 'mdata6'"><span class="tag type-tag">Wearable GPS</span>
+                                    </p>
+                                    <p v-if="mobility_type == 'mdata7'"><span class="tag type-tag">Aerial Imagery</span>
+                                    </p>
+                                    <p v-if="mobility_type == 'mdata8'"><span class="tag type-tag">Vehicle GPS</span>
+                                    </p>
+                                    <p v-if="mobility_type == 'mdata9'"><span class="tag type-tag">Bluetooth</span></p>
+                                    <p v-if="mobility_type == 'mdata0a'"><span class="tag type-tag">Geotagged Social
+                                            Media Data</span></p>
+                                    <p v-if="mobility_type == 'mdata0b'"><span class="tag type-tag">Cellular Signaling
+                                            Data</span></p>
+                                    <p v-if="mobility_type == 'mdata0c'"><span class="tag type-tag">Combined Third-Party
+                                            smartphone-derived GPS</span></p>
+                                    <p v-if="mobility_type == 'mdata0d'"><span class="tag type-tag">Third party location
+                                            data</span></p>
+                                    <p v-if="mobility_type == 'mdata0e'"><span class="tag type-tag">Sensor Data</span>
+                                    </p>
+                                    <p v-if="mobility_type == 'mdata0f'"><span class="tag type-tag">WiFi Footfall
+                                            data</span></p>
+                                    <p v-if="mobility_type == 'mdata1a'"><span class="tag type-tag">Ticketing fare
+                                            data</span></p>
+                                    <p v-if="mobility_type == 'mdata1b'"><span class="tag type-tag">Public
+                                            transportation records</span></p>
+                                    <p v-if="mobility_type == 'mdata1c'"><span class="tag type-tag">Point of Interest
+                                            Data</span></p>
                                 </div>
+                            </div>
                             <div class="tag-row">
                                 <span id="location-icon" class="material-icons"> search</span>
                                 <div class="tag-col" v-if="project.project_name.scope">
@@ -249,11 +268,50 @@
             events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of
             these strands can contact us at <a style="color:#ffffff;font-weight:400"
                 href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a></p>
-        <!-- <br>If these projects interest you, you might also be interested in The GovLab’s <a
-                    style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a
-                collective intelligence course which aims to improve responses to COVID-19.</p> -->
     </div>
+    <div  class="divider">
+        <h1>Authors</h1>
+    </div>
+    <div class="stay-connected partners">
+        <h1>The Governance Lab</h1>
+        <p>The Governance Lab at New York University’s Tandon School of Engineering, The GovLab, is an action research
+            center whose mission is to strengthen the ability of institutions — including but not limited to governments
+            — and people to work more openly, collaboratively, effectively and legitimately to make better decisions and
+            solve public problems. The GovLab’s existing Data Collaborative framework identifies the factors that make
+            data-sharing partnerships effective in generating public value, as well as providing a blueprint for
+            designing successful Data Collaboratives while also embedding principles of responsible data use. As an
+            extension of this work, The GovLab’s #Data4COVID-19 project provides a living repository of 175
+            multi-stakeholder data collaboratives focusing on data sharing throughout the pandemic, including 31
+            projects focused primarily on mobility data sharing - enabling a jumpstart of the above project with early
+            deliverables from mid November onwards. </p>
+    </div>
+    <div class="stay-connected partners">
+        <h1>Cuebiq Data for Good</h1>
+        <p>“Data for Good” is the corporate social responsibility program of Cuebiq, a mobility data platform. Since
+            2016, Cuebiq has provided mobility data and insights for over 100 academic research projects and
+            humanitarian initiatives related to human mobility. Throughout the COVID-19 pandemic alone, Cuebiq
+            established a COVID-19 Data Collaborative to provide privacy preserving mobility data to dozens of
+            organizations, including the CDC, the City of New York, UNICEF, the World Bank, Johns Hopkins University,
+            and Oxford, among many others. Beyond the establishment of a formal COVID-19 Data Collaborative, Cuebiq has
+            built a model for responsible mobility data sharing grounded in ethical data provenance and privacy by
+            design.</p>
+    </div>
+    <div class="stay-connected partners">
+        <h1>Open Data Institute</h1>
+        <p>The ODI was co-founded in 2012 by the inventor of the web Sir Tim Berners-Lee and artificial intelligence
+            expert Sir Nigel Shadbolt to show the value of open data, and to advocate for the innovative use of open
+            data to affect positive change across the globe.<br>
 
+            We’re an independent, non-profit, non-partisan company that, since our creation, has welcomed high-profile
+            board members including Mumsnet founder Justine Roberts, Lastminute.com founder Baroness Martha Lane Fox and
+            former European Commissioner Neelie Kroes.<br>
+
+            Headquartered in London, with an international reach, hundreds of members, thousands of people trained,
+            dozens of startups incubated, and a convening space in the heart of the capital, we invite everyone
+            interested in developing with data – whether on an individual, organisational or global level – to get in
+            touch.
+        </p>
+    </div>
     <footer>
         <div class="logo-side">
             <div class="logos">
@@ -282,12 +340,6 @@
         </div>
     </footer>
     <footer>
-
-        <div class="attribute">
-            <p>The #Data4COVID19 Repository is made possible in part by a #COVIDaction Data Challenge award from the
-                UKAID Department for International Development (DFID)’s Frontier Technologies Hub.
-            </p>
-        </div>
         <div class="logo-side">
             <div class="logos">
                 <img src="img/ukaid.png">

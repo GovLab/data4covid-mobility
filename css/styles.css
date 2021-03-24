@@ -931,6 +931,19 @@ margin: 0.25rem 0;
   background-color: var(--orange);
   padding: 2rem 8rem;
 }
+.stay-connected.partners{
+  background-color: var(--grey05);
+
+  border-bottom: 0.25px solid var(--dark-grey);
+}
+.stay-connected.stay-connected.partners h1{
+  color: var(--dark-grey);
+}
+.stay-connected.stay-connected.partners p{
+  color: var(--dark-grey);
+  font-weight: 300;
+  font-size:1.1rem;
+}
 .stay-connected h1{
   margin: 0 0 0 20px;
   color:var(--white);
