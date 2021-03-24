@@ -1,6 +1,6 @@
 
 :root {
-  --purple: #E4572E;
+  --orange: #E4572E;
   --yellow: #F5B700;
   --yellow-dark: #f5a700;
   --green: #43AA8B;
@@ -54,7 +54,7 @@ header{
   align-items: center;
   justify-content: center;
   height: 100%;
-  background-color: var(--purple);
+  background-color: var(--orange);
 }
 
 header img{
@@ -73,7 +73,7 @@ header img{
   padding:0 12rem;
   /* background-image: url("../img/hero-head.jpg"); */
   background-blend-mode: multiply;
-  background-color: var(--purple); 
+  background-color: var(--orange); 
   background-size: cover;
   background-position: center top;
 }
@@ -99,7 +99,7 @@ body {
   text-align: center;
   padding: 0 12rem;
   background-blend-mode: multiply;
-  background-color: var(--purple); 
+  background-color: var(--orange); 
   background-size: cover;
   background-position: center center;
 }
@@ -140,7 +140,7 @@ body {
 }
 .description-text{
   padding: 4rem 8rem;
-  background-color: var(--purple);
+  background-color: var(--orange);
   width:50%;
   text-align: center;
   align-items: center;
@@ -192,6 +192,26 @@ body {
 
   text-decoration-style: dotted;
 
+}
+.home-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+
+  margin-top: -50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.home-btn a.btn{
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 20px;
+  background-color: var(--yellow);
+}
+.home-btn a.btn:hover{
+  background-color: var(--blue);
 }
 .description-text a.btn{
   color: white;
@@ -426,7 +446,7 @@ select::-ms-expand {
   width: 100%;
   text-align: center;
   padding: 2rem 0;
-  background-color: var(--purple);
+  background-color: var(--orange);
 }
 input[type=text] {
   border: 2px solid var(--white70);
@@ -455,7 +475,7 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
 }
 .title-divider h1{
   font-weight: 300;
-  color: var(--purple);
+  color: var(--orange);
 }
 .summary{
   padding: 1rem 15rem 1rem 15rem;
@@ -543,7 +563,7 @@ a.column-3-timeline-5 {
   float: left;
   text-align: center;
   width: 20%;
-  border-top: 1px solid var(--purple);
+  border-top: 1px solid var(--orange);
   text-decoration: none;
   color: #3d3d3d;
   font-size: 0.8rem;
@@ -617,8 +637,8 @@ a.column-3-timeline-5 {
 
 a.column-3-timeline-5 {
   width: 100%;
-  border-left: 1px solid var(--purple);
-  border-top: 0px solid var(--purple);
+  border-left: 1px solid var(--orange);
+  border-top: 0px solid var(--orange);
   text-align: left;
 }
 .dot-class{
@@ -669,7 +689,7 @@ font-size: 1rem;
   color: var(--grey20);
 }
 .phase-col.phase-sel{
-  color: var(--purple);
+  color: var(--orange);
   font-weight: 600;
   font-size: 1.2rem;
 }
@@ -733,7 +753,7 @@ color: var(--grey);
   padding-bottom: 2rem;
 }
 .project-section{
-  background-color: var(--purple);
+  background-color: var(--orange);
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -863,7 +883,7 @@ margin: 0.25rem 0;
   -webkit-flex: 0 1 auto;
   -ms-flex:0 1 auto;
   flex: 0 1 auto;
-  max-width: 70%;
+  max-width: 100%;
 }
 .tag{
   color: #ffffff;
@@ -879,6 +899,9 @@ margin: 0.25rem 0;
 }
 .dp-tag{
   background-color:var(--green);
+}
+.type-tag{
+  background-color:var(--blue);
 }
 .de-tag{
   background-color:var(--blue);
@@ -905,7 +928,7 @@ margin: 0.25rem 0;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: var(--purple);
+  background-color: var(--orange);
   padding: 2rem 8rem;
 }
 .stay-connected h1{
@@ -1022,7 +1045,7 @@ header.project-header{
     font-weight: 300;
   }
   .project-page-section h3{
-    color: var(--purple);
+    color: var(--orange);
     margin:0;
     font-weight: 200;
     font-size: 2.3rem;
@@ -1062,7 +1085,7 @@ header.project-header{
     color: var(--grey);
   }
   #project-page .region-tag{
-    background-color:var(--purple);
+    background-color:var(--orange);
     color: var(--white);
   }
 

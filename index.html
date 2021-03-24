@@ -49,43 +49,48 @@
 </header>
 
 <body>
-   
 
-        <div class="hero testing hero-banner">
-            <div class="text">
-                <h1>#Data4COVID19</h1>
-                <span>
-                    <p>A living repository for &nbsp<a href="https://datacollaboratives.org/" target="_blank">data
-                            collaboratives</a>&nbsp seeking to address the spread of &nbsp <a
-                            href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen"
-                            target="_blank">COVID-19</a>&nbsp </p>
-                </span>
-            </div>
-        </div>
-        <div class="description-boxes">
-            <div class="description-text">
-                <p>Share your project for inclusion. We seek to learn from initiatives that reuse data for covid19 in a
-                    collaborative, responsible and systematic way. </p>
-                <a class="btn" href="https://forms.gle/R58Wn15xTJgR7TFL8" target="_blank">CONTRIBUTE TO THIS
-                    REPOSITORY</a>
 
-            </div>
-            <div class="description-bullets">
-                <p>Part of our <a href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244"
-                        target="_blank">Call For Action</a> to Build A Responsible Infrastructure For Data-driven
-                    Pandemic Response.
-                </p>
-                <br>
-                <a class="btn"
-                    href="https://thegovlab.us6.list-manage.com/subscribe?u=1a990feb5c&id=9440a57cfc&utm_source=Data+Stewards+Network&utm_campaign=358957fad7-EMAIL_CAMPAIGN_2019_05_17_08_37_COPY_01&utm_medium=email&utm_term=0_bc6d09925f-358957fad7-87790069"
-                    target="_blank">Sign up for the data4covid19 newsletter</a>
+    <div class="hero testing hero-banner">
+        <div class="text">
+            <h1>#Data4COVID19</h1>
+            <span>
+                <p>A living repository of mobility &nbsp<a href="https://datacollaboratives.org/" target="_blank">data
+                        collaboratives</a>&nbsp seeking to address the spread of &nbsp <a
+                        href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen"
+                        target="_blank">COVID-19</a>&nbsp </p>
+            </span>
+        </div>
+    </div>
+    <div class="description-boxes">
+        <div class="description-bullets">
+            <p>When COVID-19 emerged as a global health threat in early 2020, epidemiologists across research
+                institutions and the public sector turned to mobility data as a source for situational awareness to
+                inform containment strategies.
 
-            </div>
+                The <a href="https://en.wikipedia.org/wiki/Open_Data_Institute" target="_blank">Open Data Institute</a>,
+                <a href="https://www.thegovlab.org/" target="_blank">The GovLab</a>, <a href="https://www.cuebiq.com/"
+                    target="_blank">Cuebiq</a> sought to understand the current state of mobility data
+                collaboratives for COVID-19 response and identify conditions for success and obstacles to achieving
+                impact.</p>
+
         </div>
-        <div class="divider">
-            <h1>Explore the repository</h1>
+        <div class="description-text">
+            <p>As such, we assembled a repository of mobility data collaboratives related to COVID-19, five of which are
+                described in greater detail through long-form case studies. We provide recommendations towards enabling
+                more systematic, sustainable and responsible models of reuse of mobility data through data collaboration
+                as to support decision-making regarding pandemic prevention, monitoring, and response</p>
+               
         </div>
-        <div id="home-page">
+    </div>
+    <div class="home-btn">
+        <a class="btn" href="" target="_blank">Read the Full Report: <br>The Use of Mobility Data for Responding to the COVID-19 Pandemic</a>
+    </div>
+    
+    <div style="padding-top:50px;margin-top:-50px" class="divider">
+        <h1>Explore the repository</h1>
+    </div>
+    <div id="home-page">
         <div class="filters">
             <div class="form-control">
                 <select id="form-1" @change="changeFilter($event)">
@@ -113,7 +118,7 @@
             </div>
             <p>&nbsp&nbsp&nbsp</p>
             <div class="form-control">
-                <select id="form-4"  @change="changeFilter($event)">
+                <select id="form-4" @change="changeFilter($event)">
                     <option value="" selected disabled>Pandemic Phase</option>
                     <option v-for="phase in js_phase" :value="phase.code" :key="phase.code">{{ phase.name }}</option>
                 </select>
@@ -124,7 +129,7 @@
             <input name="buttonExecute" @click="searchItems()" type="button" value="Search" />
             <input name="buttonExecute" @click="ResetItems()" type="button" value="Reset" />
         </div>
-        
+
         <div class="count-entries">
             <p><span>Total number of projects in the repository: <b>{{indexData.length}}</b></span></p>
         </div>
@@ -138,7 +143,8 @@
             <div v-for="project in filterData" class="project-item">
                 <a :href="'projects/' + project.project_name.slug" class="project-card">
                     <div class="project-img">
-                        <img v-if="project.project_name.thumbnail" class="project-img" :src="project.project_name.thumbnail.data.full_url">
+                        <img v-if="project.project_name.thumbnail" class="project-img"
+                            :src="project.project_name.thumbnail.data.full_url">
                     </div>
                     <div class="project-text small">
                         <p id="title">{{project.project_name.title}}</p>
@@ -146,13 +152,43 @@
                         <p id="desc">{{project.project_name.description}}</p>
                         <div class="tag-section">
                             <div class="tag-row">
+                                
+                                    <span id="location-icon" class="material-icons"> insert_chart</span>
+                                    <div class="tag-col" v-for="mobility_type in project.mobility_data_type" v-if="mobility_type">
+
+                                        <p v-if="mobility_type == 'mdata1'"><span class="tag type-tag">Call Detail Records</span></p>
+                                        <p v-if="mobility_type == 'mdata2'"><span class="tag type-tag">x-DRs</span></p>
+                                        <p v-if="mobility_type == 'mdata3'"><span class="tag type-tag">First-Party Software Development Kit-derived Smartphone GPS</span></p>
+                                        <p v-if="mobility_type == 'mdata4'"><span class="tag type-tag">Third-Party Software Development Kit-derived Smartphone GPS</span></p>
+                                        <p v-if="mobility_type == 'mdata5'"><span class="tag type-tag">BidStream Data</span></p>
+                                        <p v-if="mobility_type == 'mdata6'"><span class="tag type-tag">Wearable GPS</span></p>
+                                        <p v-if="mobility_type == 'mdata7'"><span class="tag type-tag">Aerial Imagery</span></p>
+                                        <p v-if="mobility_type == 'mdata8'"><span class="tag type-tag">Vehicle GPS</span></p>
+                                        <p v-if="mobility_type == 'mdata9'"><span class="tag type-tag">Bluetooth</span></p>
+                                        <p v-if="mobility_type == 'mdata0a'"><span class="tag type-tag">Geotagged Social Media Data</span></p>
+                                        <p v-if="mobility_type == 'mdata0b'"><span class="tag type-tag">Cellular Signaling Data</span></p>
+                                        <p v-if="mobility_type == 'mdata0c'"><span class="tag type-tag">Combined Third-Party smartphone-derived GPS</span></p>
+                                        <p v-if="mobility_type == 'mdata0d'"><span class="tag type-tag">Third party location data</span></p>
+                                        <p v-if="mobility_type == 'mdata0e'"><span class="tag type-tag">Sensor Data</span></p>
+                                        <p v-if="mobility_type == 'mdata0f'"><span class="tag type-tag">WiFi Footfall data</span></p>
+                                        <p v-if="mobility_type == 'mdata1a'"><span class="tag type-tag">Ticketing fare data</span></p>
+                                        <p v-if="mobility_type == 'mdata1b'"><span class="tag type-tag">Public transportation records</span></p>
+                                        <p v-if="mobility_type == 'mdata1c'"><span class="tag type-tag">Point of Interest Data</span></p>
+                                    </div>
+                                </div>
+                            <div class="tag-row">
                                 <span id="location-icon" class="material-icons"> search</span>
                                 <div class="tag-col" v-if="project.project_name.scope">
-                                    <p v-if="project.project_name.scope == '0'"><span class="tag dp-tag">Local</span></p>
-                                    <p v-if="project.project_name.scope == '1'"><span class="tag dp-tag">Regional</span></p>
-                                    <p v-if="project.project_name.scope == '2'"><span class="tag dp-tag">National</span></p>
-                                    <p v-if="project.project_name.scope == '3'"><span class="tag dp-tag">Multilateral</span></p>
-                                    <p v-if="project.project_name.scope == '4'"><span class="tag dp-tag">Undefined</span></p>
+                                    <p v-if="project.project_name.scope == '0'"><span class="tag dp-tag">Local</span>
+                                    </p>
+                                    <p v-if="project.project_name.scope == '1'"><span class="tag dp-tag">Regional</span>
+                                    </p>
+                                    <p v-if="project.project_name.scope == '2'"><span class="tag dp-tag">National</span>
+                                    </p>
+                                    <p v-if="project.project_name.scope == '3'"><span
+                                            class="tag dp-tag">Multilateral</span></p>
+                                    <p v-if="project.project_name.scope == '4'"><span
+                                            class="tag dp-tag">Undefined</span></p>
                                 </div>
                             </div>
                             <div class="tag-row">
@@ -203,64 +239,64 @@
                     </div>
                 </a>
             </div>
-            
+
         </div>
 
     </div>
-        <div class="stay-connected">
-            <h1>Stay Up to Date</h1>
-            <p>Information on each of these project streams, as well information about upcoming coronavirus-related
-                events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of
-                these strands can contact us at <a style="color:#ffffff;font-weight:400"
-                    href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a></p>
-            <!-- <br>If these projects interest you, you might also be interested in The GovLab’s <a
+    <div class="stay-connected">
+        <h1>Stay Up to Date</h1>
+        <p>Information on each of these project streams, as well information about upcoming coronavirus-related
+            events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of
+            these strands can contact us at <a style="color:#ffffff;font-weight:400"
+                href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a></p>
+        <!-- <br>If these projects interest you, you might also be interested in The GovLab’s <a
                     style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a
                 collective intelligence course which aims to improve responses to COVID-19.</p> -->
+    </div>
+
+    <footer>
+        <div class="logo-side">
+            <div class="logos">
+                <img src="img/govlab-logo-white.png">
+                <img id="luminate" src="img/luminate.png">
+            </div>
+            <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
+                The GovLab is to strengthen the ability of institutions — including but not limited to governments —
+                and people to work more openly, collaboratively, effectively, and legitimately to make better
+                decisions and solve public problems. We believe that increased availability and use of data, new
+                ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process,
+                combined with new advances in technology and science, can transform governance. We approach each
+                challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem,
+                sector, geography, and level of government. For more information, visit thegovlab.org.</p>
         </div>
+        <div class="address">
 
-        <footer>
-            <div class="logo-side">
-                <div class="logos">
-                    <img src="img/govlab-logo-white.png">
-                    <img id="luminate" src="img/luminate.png">
-                </div>
-                <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
-                    The GovLab is to strengthen the ability of institutions — including but not limited to governments —
-                    and people to work more openly, collaboratively, effectively, and legitimately to make better
-                    decisions and solve public problems. We believe that increased availability and use of data, new
-                    ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process,
-                    combined with new advances in technology and science, can transform governance. We approach each
-                    challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem,
-                    sector, geography, and level of government. For more information, visit thegovlab.org.</p>
-            </div>
-            <div class="address">
+            <h4>CONTACT US</h4>
+            <p>The GovLab<br>
+                NYU Tandon School of Engineering<br>
+                2 MetroTech Center, 9th Floor<br>
+                Brooklyn, NY 11201<br>
+                (646) 997-3150<br>
+                info@thegovlab.org
+            </p>
+        </div>
+    </footer>
+    <footer>
 
-                <h4>CONTACT US</h4>
-                <p>The GovLab<br>
-                    NYU Tandon School of Engineering<br>
-                    2 MetroTech Center, 9th Floor<br>
-                    Brooklyn, NY 11201<br>
-                    (646) 997-3150<br>
-                    info@thegovlab.org
-                </p>
-            </div>
-        </footer>
-        <footer>
-
-            <div class="attribute">
-                <p>The #Data4COVID19 Repository is made possible in part by a #COVIDaction Data Challenge award from the
-                    UKAID Department for International Development (DFID)’s Frontier Technologies Hub.
-                </p>
-            </div>
-            <div class="logo-side">
-                <div class="logos">
-                    <img src="img/ukaid.png">
-                    <img style="margin-left:20px" src="img/COVIDaction_logo-white.png">
-
-                </div>
+        <div class="attribute">
+            <p>The #Data4COVID19 Repository is made possible in part by a #COVIDaction Data Challenge award from the
+                UKAID Department for International Development (DFID)’s Frontier Technologies Hub.
+            </p>
+        </div>
+        <div class="logo-side">
+            <div class="logos">
+                <img src="img/ukaid.png">
+                <img style="margin-left:20px" src="img/COVIDaction_logo-white.png">
 
             </div>
-        </footer>
+
+        </div>
+    </footer>
 
 </body>
 
