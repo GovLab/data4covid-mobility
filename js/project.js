@@ -29,6 +29,8 @@ new Vue({
  
     return {
       filterData: [],
+      mobilityData:[],
+      indexData:[],
       apiURL: 'https://directus.thegovlab.com/data4covid',
     }
   },
@@ -39,7 +41,7 @@ new Vue({
     this.memberslug = this.memberslug[this.memberslug.length - 1];
     console.log(this.memberslug);
     this.fetchIndex();
-
+    this.fetchMobility();
   },
   methods: {
 
@@ -62,8 +64,28 @@ new Vue({
   }
 ).then(data => {
   
+  self.filterData = data.data;
+})
+.catch(error => console.error(error));
+    },
+    fetchMobility() {
+     
+      self = this;
+      const client = new DirectusSDK({
+        url: "https://directus.thegovlab.com/",
+        project: "data4covid",
+        storage: window.localStorage
+      });
+
+      client.getItems(
+        'mobility',
+        {
+          fields: ['*.*','project_name.*','project_name.thumbnail.*']
+        }
+      ).then(data => {
+  
   self.indexData = data.data;
-  self.filterData = self.indexData;
+  self.mobilityData = self.indexData.filter(items => (items.project_name.title == self.filterData[0].title));
 })
 .catch(error => console.error(error));
     },

@@ -50,7 +50,7 @@
 
 <body>
     <div id="project-page">
-
+  
     <div class="project-header-row">
         <div class="project-header-col col-20":style="{ backgroundImage: 'url(' + filterData[0].thumbnail.data.full_url+ ')' }">
             
@@ -164,7 +164,29 @@
             
           </div>
           <div class="column-summary right">
-
+            <p><span class="summary-item">Privacy Measures</span>&nbsp
+                <span>{{mobilityData[0].privacy_measures}}</span></p>
+                <p><span class="summary-item">Data Type</span>&nbsp
+                    <span v-for="mobility_type in mobilityData[0].mobility_data_type">
+                    <span v-if="mobility_type == 'mdata1'">Call Detail Records</span>
+                    <span v-if="mobility_type == 'mdata2'">x-DRs</span>
+                    <span v-if="mobility_type == 'mdata3'">First-Party Software Development Kit-derived Smartphone GPS</span>
+                    <span v-if="mobility_type == 'mdata4'">Third-Party Software Development Kit-derived Smartphone GPS</span>
+                    <span v-if="mobility_type == 'mdata5'">BidStream Data</span>
+                    <span v-if="mobility_type == 'mdata6'">Wearable GPS</span>
+                    <span v-if="mobility_type == 'mdata7'">Aerial Imagery</span>
+                    <span v-if="mobility_type == 'mdata8'">Vehicle GPS</span>
+                    <span v-if="mobility_type == 'mdata9'">Bluetooth</span>
+                    <span v-if="mobility_type == 'mdata0a'">Geotagged Social Media Data</span>
+                    <span v-if="mobility_type == 'mdata0b'">Cellular Signaling Data</span>
+                    <span v-if="mobility_type == 'mdata0c'">Combined Third-Party smartphone-derived GPS</span>
+                    <span v-if="mobility_type == 'mdata0d'">Third party location data</span>
+                    <span v-if="mobility_type == 'mdata0e'">Sensor Data</span>
+                    <span v-if="mobility_type == 'mdata0f'">WiFi Footfall data</span>
+                    <span v-if="mobility_type == 'mdata1a'">Ticketing fare data</span>
+                    <span v-if="mobility_type == 'mdata1b'">Public transportation records</span>
+                    <span v-if="mobility_type == 'mdata1c'">Point of Interest Data</span>
+                </span></p>
                 <p><span class="summary-item">Data Supplier</span>&nbsp
                     <span v-for="supplier in filterData[0].data_supplier">
                     <span v-if="supplier == 'supplier_0'">Private Sector;</span>
