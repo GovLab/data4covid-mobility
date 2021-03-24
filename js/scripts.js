@@ -74,7 +74,7 @@ new Vue({
         { code: 'topic_13', name: 'Assessing Environmental Impact' },
         { code: 'topic_14', name: 'Understanding the Economic Impact' },
       ],
-      js_type: [
+      js_mobility: [
         { code: '', name: 'All' },
         { code: 'mdata1', name: 'Call Detail Records' },
         { code: 'mdata2', name: 'x-DRs' },
@@ -94,7 +94,6 @@ new Vue({
         { code: 'mdata1a', name: 'Ticketing fare data' },
         { code: 'mdata1b', name: 'Public transportation records' },
         { code: 'mdata1c', name: 'Point of Interest Data' },
-
       ],
       sortBy: 'name',
     sortDirection: 'ASC',
@@ -157,27 +156,27 @@ new Vue({
 
       document.getElementById("filter-count").style.display = "block";
       var element = document.body.querySelectorAll("select");
-      this.selectedScope = element[0].value;
+      this.selectedType = element[0].value;
       this.selectedRegion = element[1].value;
       this.selectedArea = element[2].value;
       this.selectedPhase = element[3].value;
       
       //Scope Filter
-      if (this.selectedScope == '')
-        self.filtered_scope = self.indexData;
+      if (this.selectedType == '')
+        self.filtered_type = self.indexData;
       else {
         console.log(self.indexData);
         let filtered_by_scope = self.indexData.filter(function (e) {
      
-          return e.project_name.scope == self.selectedScope;
+          return e.mobility_data_type.some(type_element => type_element == self.selectedType);
         });
-        self.filtered_scope = filtered_by_scope;
+        self.filtered_type = filtered_by_scope;
       }
       //Region Filter
       if (this.selectedRegion == '')
-        self.filtered_region = self.filtered_scope;
+        self.filtered_region = self.filtered_type;
       else {
-        let filtered_by_region = self.filtered_scope.filter(function (e) {
+        let filtered_by_region = self.filtered_type.filter(function (e) {
           return e.project_name.region.some(reg_element => reg_element == self.selectedRegion);
         });
         self.filtered_region = filtered_by_region;

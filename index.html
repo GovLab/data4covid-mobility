@@ -94,8 +94,8 @@
         <div class="filters">
             <div class="form-control">
                 <select id="form-1" @change="changeFilter($event)">
-                    <option class="material-icons" value="" selected disabled>Scope</option>
-                    <option v-for="scope in js_scope" :value="scope.code" :key="scope.code">{{ scope.name }}
+                    <option class="material-icons" value="" selected disabled>Mobility Data Type</option>
+                    <option v-for="scope in js_mobility" :value="scope.code" :key="scope.code">{{ scope.name }}
                     </option>
                 </select>
             </div>
