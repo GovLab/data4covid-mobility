@@ -199,10 +199,13 @@ body {
   align-items: center;
   text-align: center;
   width: 40%;
-
   margin-top: -50px;
   margin-left: auto;
   margin-right: auto;
+}
+.home-btn.project-btn{
+  margin-top:0;
+  margin-bottom: 20px;
 }
 .home-btn a.btn{
   font-weight: 600;
@@ -1018,7 +1021,7 @@ header.project-header{
   .project-header-row{
     display:flex;
     flex-direction: row;  
-    height: 68vh;
+    height: 75vh;
   }
   .project-header-col{
     display:flex;

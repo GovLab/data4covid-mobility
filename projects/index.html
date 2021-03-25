@@ -41,16 +41,16 @@
     </span></a>
     <header class="gl-header">
         <a class="govlab-logo" target="_blank" href="http://thegovlab.org">
-            <img src="img/govlab-logo-white.png" alt="The GovLab">
+            <img src="../img/govlab-logo-white.png" alt="The GovLab">
         </a>
         <!-- <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
             <img id="luminate" src="img/luminate.png">
         </a> -->
         <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
-            <img id="luminate" src="img/odi.png">
+            <img id="luminate" src="../img/odi.png">
         </a>
         <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
-            <img id="luminate" src="img/Cuebiq.png">
+            <img id="luminate" src="../img/Cuebiq.png">
         </a>
     </header>
 
@@ -125,7 +125,9 @@
                     </div>
         </div>
     </div>
-
+    <div class="home-btn project-btn">
+        <a class="btn" v-if="mobilityData[0].case_study_url" :href="mobilityData[0].case_study_url" target="_blank">Read the full case study</a>
+    </div>
     <div class="summary">
 
         <div class="row-summary">
