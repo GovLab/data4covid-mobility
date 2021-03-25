@@ -147,6 +147,7 @@
             <div v-for="project in filterData" class="project-item">
                 <a :href="'projects/' + project.project_name.slug" class="project-card">
                     <div class="project-img">
+                       
                         <img v-if="project.project_name.thumbnail" class="project-img"
                             :src="project.project_name.thumbnail.data.full_url">
                     </div>
@@ -155,6 +156,12 @@
                         <p id="date">{{dateShow(project.project_name.project_initiation_date)}}</p>
                         <p id="desc">{{project.project_name.description}}</p>
                         <div class="tag-section">
+                            <div v-if="project.case_study_url" class="tag-row">
+
+                                <span id="long-case-id" class="material-icons"> description</span>
+                                <p><span class="tag casestudy-tag">Long case study available</span></p>
+                                
+                            </div>
                             <div class="tag-row">
 
                                 <span id="location-icon" class="material-icons"> insert_chart</span>

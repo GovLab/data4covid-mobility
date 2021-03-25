@@ -903,6 +903,9 @@ margin: 0.25rem 0;
 .dp-tag{
   background-color:var(--green);
 }
+.casestudy-tag{
+  background-color:var(--yellow-dark);
+}
 .type-tag{
   background-color:var(--blue);
 }
@@ -925,7 +928,10 @@ margin: 0.25rem 0;
   font-size: 16pt;
   color: var(--grey);
 }
-
+#long-case-id{
+  color: var(--yellow-dark);
+  font-size: 16pt;
+}
 .stay-connected{
   display:flex;
   flex-direction: column;
