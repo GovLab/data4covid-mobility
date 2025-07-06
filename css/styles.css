@@ -748,6 +748,7 @@ color: var(--grey);
   text-decoration: none;
   border-bottom: 2px solid var(--yellow);
   }
+  
   .repo-txt a:hover{
   color: var(--yellow);
   border-bottom: 2px solid var(--grey);
