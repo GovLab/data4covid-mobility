@@ -1,0 +1,11 @@
+{
+  "name": "data4covid-mobility-offline",
+  "version": "1.0.0",
+  "description": "Offline static site for Data4COVID Mobility Repository",
+  "scripts": {
+       "start": "serve -s ."
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
+}

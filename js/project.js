@@ -16,7 +16,7 @@ function main() {
 main();
 
 ////////////////////////////////////////////////////////////
-///// TEAM  API REQUEST ` `
+///// OFFLINE LOCAL JSON LOAD /////
 ////////////////////////////////////////////////////////////
 
 Vue.use(VueMeta);
@@ -31,63 +31,52 @@ new Vue({
       filterData: [],
       mobilityData:[],
       indexData:[],
-      apiURL: 'https://directus.thegovlab.com/data4covid',
     }
   },
 
   created: function created() {
-
-    this.memberslug=window.location.href.split('/');
-    this.memberslug = this.memberslug[this.memberslug.length - 1];
-    console.log(this.memberslug);
+    // Robustly extract the slug from the URL path (last non-empty segment)
+    const pathSegments = window.location.pathname.split('/').filter(Boolean);
+    this.memberslug = pathSegments[pathSegments.length - 1];
+    console.log('Slug:', this.memberslug);
     this.fetchIndex();
-    this.fetchMobility();
+    
   },
   methods: {
 
     fetchIndex() {
      
       self = this;
-      const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
-        project: "data4covid",
-        storage: window.localStorage
-      });
-
-      client.getItems(
-  'projects',
-  {
-    filter: {
-      slug: self.memberslug
-    },
-    fields: ['*.*']
-  }
-).then(data => {
-  
-  self.filterData = data.data;
-})
-.catch(error => console.error(error));
+      // Look for the slug in the local JSON for all the projects. The slug is in self.memberslug.
+      fetch('projects-local.json')
+        .then(response => response.json())
+        .then(data => {
+          // Find the project(s) with the matching slug
+          const filtered = data.data.filter(item => item.slug === self.memberslug);
+          self.filterData = filtered;
+          self.fetchMobility();
+        })
+        .catch(error => console.error('Error loading projects:', error));
     },
     fetchMobility() {
      
       self = this;
-      const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
-        project: "data4covid",
-        storage: window.localStorage
-      });
-
-      client.getItems(
-        'mobility',
-        {
-          fields: ['*.*','project_name.*','project_name.thumbnail.*']
-        }
-      ).then(data => {
-  
-  self.indexData = data.data;
-  self.mobilityData = self.indexData.filter(items => (items.project_name.title == self.filterData[0].title));
-})
-.catch(error => console.error(error));
+      // Load mobility data from local JSON
+      fetch('mobility-projects-local.json')
+        .then(response => response.json())
+        .then(data => {
+          self.indexData = data.data;
+          
+          // Filter mobility data to match the current project
+          if (self.filterData.length > 0) {
+            
+            self.mobilityData = self.indexData.filter(items => 
+              items.project_name && items.project_name.title === self.filterData[0].title
+            );
+          }
+          console.log(self.mobilityData);
+        })
+        .catch(error => console.error('Error loading mobility data:', error));
     },
     dateShow(date) {
       return moment(date).format("MMMM YYYY");

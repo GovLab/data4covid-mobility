@@ -76,6 +76,7 @@ header img{
   background-color: var(--orange); 
   background-size: cover;
   background-position: center top;
+  max-height: fit-content;
 }
 .gl-header .luminate-logo img{
   height:25px;

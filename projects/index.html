@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -25,7 +24,7 @@
         Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
         University of Washington, and others—to identify, collect, and analyze the value data can provide to the
         ongoing COVID-19 pandemic" />
-    <meta property="og:image" content="../img/covid-logo-color.png" />
+    <meta property="og:image" content="/img/covid-logo-color.png" />
     <title>Data4COVID19</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
@@ -34,23 +33,23 @@
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <script src="https://momentjs.com/downloads/moment-timezone-with-data.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 <a style="text-decoration: none;" href="https://list.data4covid19.org" class="top-bar_button"><span class="material-icons">
     reply
     </span></a>
     <header class="gl-header">
         <a class="govlab-logo" target="_blank" href="http://thegovlab.org">
-            <img src="../img/govlab-logo-white.png" alt="The GovLab">
+            <img src="/img/govlab-logo-white.png" alt="The GovLab">
         </a>
         <!-- <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
             <img id="luminate" src="img/luminate.png">
         </a> -->
         <a class="luminate-logo" target="_blank" href="https://en.wikipedia.org/wiki/Open_Data_Institute">
-            <img id="luminate" src="../img/odi.png">
+            <img id="luminate" src="/img/odi.png">
         </a>
         <a class="luminate-logo" target="_blank" href="https://www.cuebiq.com/">
-            <img id="luminate" src="../img/Cuebiq.png">
+            <img id="luminate" src="/img/Cuebiq.png">
         </a>
     </header>
 
@@ -58,10 +57,10 @@
     <div id="project-page">
   
     <div class="project-header-row">
-        <div class="project-header-col col-20":style="{ backgroundImage: 'url(' + filterData[0].thumbnail.data.full_url+ ')' }">
+        <div class="project-header-col col-20":style="{ backgroundImage: 'url(' +'../' + filterData[0].thumbnail.filename_disk+ ')' }">
             
         </div>
-        
+
         <div class="project-header-col col-80">
             <h1>{{filterData[0].title}}</h1>
             <p id="date">{{dateShow(filterData[0].project_initiation_date)}}</p>
@@ -125,6 +124,7 @@
                     </div>
         </div>
     </div>
+    
     <div class="home-btn project-btn">
         <a class="btn" v-if="mobilityData[0].case_study_url" :href="mobilityData[0].case_study_url" target="_blank">Read the full case study</a>
     </div>
@@ -141,7 +141,7 @@
                 <span v-if="qn == 'type_3'">Impact Assessment;</span>
             </span></p>
             <p><span class="summary-item">Topic Area</span>&nbsp<span v-for="topic in filterData[0].topic_areas">
-                <span v-if="topic == 'topic_0'">Tracking the Pandemic’s Evolution;</span>
+                <span v-if="topic == 'topic_0'">Tracking the Pandemic's Evolution;</span>
                 <span v-if="topic == 'topic_1'">Developing Disease Treatment;</span>
                 <span v-if="topic == 'topic_2'">Identifying Availability and Demand for Supplies;</span>
                 <span v-if="topic == 'topic_3'">Monitoring Adherence to Health Protocols and Practices;</span>
@@ -258,20 +258,20 @@
     </div>
     <div class="stay-connected partners">
         <h1>The Governance Lab</h1>
-        <p>The Governance Lab at New York University’s Tandon School of Engineering, The GovLab, is an action research
+        <p>The Governance Lab at New York University's Tandon School of Engineering, The GovLab, is an action research
             center whose mission is to strengthen the ability of institutions — including but not limited to governments
             — and people to work more openly, collaboratively, effectively and legitimately to make better decisions and
-            solve public problems. The GovLab’s existing Data Collaborative framework identifies the factors that make
+            solve public problems. The GovLab's existing Data Collaborative framework identifies the factors that make
             data-sharing partnerships effective in generating public value, as well as providing a blueprint for
             designing successful Data Collaboratives while also embedding principles of responsible data use. As an
-            extension of this work, The GovLab’s #Data4COVID-19 project provides a living repository of 175
+            extension of this work, The GovLab's #Data4COVID-19 project provides a living repository of 175
             multi-stakeholder data collaboratives focusing on data sharing throughout the pandemic, including 31
             projects focused primarily on mobility data sharing - enabling a jumpstart of the above project with early
             deliverables from mid November onwards. </p>
     </div>
     <div class="stay-connected partners">
         <h1>Cuebiq Data for Good</h1>
-        <p>“Data for Good” is the corporate social responsibility program of Cuebiq, a mobility data platform. Since
+        <p>"Data for Good" is the corporate social responsibility program of Cuebiq, a mobility data platform. Since
             2016, Cuebiq has provided mobility data and insights for over 100 academic research projects and
             humanitarian initiatives related to human mobility. Throughout the COVID-19 pandemic alone, Cuebiq
             established a COVID-19 Data Collaborative to provide privacy preserving mobility data to dozens of
@@ -286,7 +286,7 @@
             expert Sir Nigel Shadbolt to show the value of open data, and to advocate for the innovative use of open
             data to affect positive change across the globe.<br>
 
-            We’re an independent, non-profit, non-partisan company that, since our creation, has welcomed high-profile
+            We're an independent, non-profit, non-partisan company that, since our creation, has welcomed high-profile
             board members including Mumsnet founder Justine Roberts, Lastminute.com founder Baroness Martha Lane Fox and
             former European Commissioner Neelie Kroes.<br>
 
@@ -299,8 +299,8 @@
     <footer>
         <div class="logo-side">
             <div class="logos">
-                <img src="../img/govlab-logo-white.png">
-                <!-- <img id="luminate" src="../img/luminate.png"> -->
+                <img src="/img/govlab-logo-white.png">
+                <!-- <img id="luminate" src="/img/luminate.png"> -->
             </div>
             <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
                 The GovLab is to strengthen the ability of institutions — including but not limited to governments —
@@ -329,6 +329,6 @@
 
 <script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
 <script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
-<script src="../js/project.js"></script>
+<script src="/js/project.js"></script>
 
 </html>

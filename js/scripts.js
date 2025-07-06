@@ -112,18 +112,9 @@ new Vue({
     fetchIndex() {
 
       self = this;
-      const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
-        project: "data4covid",
-        storage: window.localStorage
-      });
-
-      client.getItems(
-        'mobility',
-        {
-          fields: ['*.*','project_name.*','project_name.thumbnail.*']
-        }
-      ).then(data => {
+      fetch('mobility-projects-local.json')
+        .then(response => response.json())
+        .then(data => {
 
         self.indexData = data.data;
    //Most recently added first
